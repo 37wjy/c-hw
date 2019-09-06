@@ -12,6 +12,5 @@ int main(int argc, char const *argv[])
         if(n==10||n==100||n==1000||n==10000||n==100000||n==1000000)
             cout<<n<<"    "<<r<<endl;
     }
-    
     return 0;
 }

@@ -15,7 +15,7 @@ int main(int argc, char const *argv[])
         sum2D+=(double)1/(101-i);
     }
     
-    cout<<setiosflags(ios::fixed)<<setprecision(3)<<"sum1F = "<<sum1F<<", sum2F = "<<sum2F<<endl
+    cout<<"sum1F = "<<sum1F<<", sum2F = "<<sum2F<<endl
                                                   <<"sum1D = "<<sum1D<<", sum2D = "<<sum2D<<endl
                                                   <<"sum1F - sum2F = "<<sum1F-sum2F<<endl
                                                   <<"sum1D - sum2D = "<<sum1D-sum2D<<endl;

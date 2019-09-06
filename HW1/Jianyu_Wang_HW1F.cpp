@@ -20,10 +20,11 @@ int main(int argc, char const *argv[])
 
     for(int16_t i=1;i>0;i++)    resualt2+=(float)1/pow(i,2);
     for(int16_t i=-1;i<0;i--)   resualt3+=(float)1/pow(i,2);
-    
+    resualt2=sqrt(6*resualt2);
+    resualt3=sqrt(6*resualt3);
     cout<<endl<<setiosflags(ios::fixed)<<setprecision(6)<<"resualt1 = "<<resualt1<<endl<<endl;
-    cout<<setiosflags(ios::fixed)<<setprecision(6)<<"resualt2 = "<<resualt2<<endl<<endl;
-    cout<<setiosflags(ios::fixed)<<setprecision(6)<<"resualt3 = "<<resualt3<<endl;
+    cout<<"resualt2 = "<<resualt2<<endl<<endl;
+    cout<<"resualt3 = "<<resualt3<<endl;
     
     return 0;
 }
