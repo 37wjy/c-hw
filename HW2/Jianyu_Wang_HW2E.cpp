@@ -4,6 +4,14 @@
 
 using namespace std;
 
+void polar2Rect(float &x,float& y, float angle,float dist){
+        x+=sin((angle/180)*M_PI)*dist;
+        y+=cos((angle/180)*M_PI)*dist;
+        y = ( (float)( (int)( (y + 0.000005) * 100000 ) ) ) / 100000;        //precision(5)
+        x = ( (float)( (int)( (x + 0.000005) * 100000 ) ) ) / 100000;
+        cout<<"Location: x = "<<x<<", y = "<<y<<endl<<endl;
+}
+
 int main(int argc, char const *argv[])
 {
     ifstream file;
@@ -16,11 +24,7 @@ int main(int argc, char const *argv[])
             cout<<"program terminates"<<endl;
             break;
         }
-        x+=sin((angle/180)*M_PI)*dist;
-        y+=cos((angle/180)*M_PI)*dist;
-        y = ( (float)( (int)( (y + 0.000005) * 100000 ) ) ) / 100000;        //precision(5)
-        x = ( (float)( (int)( (x + 0.000005) * 100000 ) ) ) / 100000;
-        cout<<"Location: x = "<<x<<", y = "<<y<<endl<<endl;
+        polar2Rect(x,y,angle,dist);
     }
 
     return 0;
