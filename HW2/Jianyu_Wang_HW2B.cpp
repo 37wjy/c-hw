@@ -11,11 +11,10 @@ bool isPrime(int num){
 
 int main(int argc, char const *argv[])
 {
-    int i;
-    while(true){
+    double i;
         cout<<"enter an positive integer:";cin>>i;
         cout<<"User enters "<<i<<endl;
-        cout<<"The number "<<i<<" is : "<<(isPrime(i)?"PRIME":"NOT PRIME")<<endl;
-    }
+        if(int(i*10)%1!=0)cout<<"The number "<<i<<" is : "<<"NOT PRIME"<<endl;
+        else cout<<"The number "<<i<<" is : "<<(isPrime(i)?"PRIME":"NOT PRIME")<<endl;
     return 0;
 }

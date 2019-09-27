@@ -1,10 +1,8 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
-class S;
-istream & operator >> (istream & ,S & );
 
 
 class S{
@@ -35,18 +33,20 @@ public:
         return true;
     }
 
-    friend istream & operator >> (istream & ,S & );
+    S(string _str){
+        a=_str;
+    }
 private:
     string a;
 };
 
-istream & operator >> (istream & in,S & cla){ in>>cla.a;}
 
 int main(int argc, char const *argv[])
 {
     cout<<"enter a string :";
-    S inp;
-    cin>>inp;
+    string str;
+    getline(cin,str);
+    S inp(str);
     cout<<endl<<"THe string backwards is : "<<inp.reverse()<<endl;
     cout<<endl<<"THe string is "<<(inp.palindrome()?"":"Not ")<<"palindrome"<<endl;
     cout<<endl<<"THe string without vowels : "<<inp.vowels()<<endl;

@@ -12,7 +12,7 @@ public:
 	Vec3d(double _x=0,double _y=0,double _z=0){x=_x;y=_y;z=_z;};
 
 	Vec3d operator+(const Vec3d& rhs) const{
-		Vec3d num(this->x+rhs.x,this->y+rhs.y,this->y+rhs.z);
+		Vec3d num(this->x+rhs.x,this->y+rhs.y,this->z+rhs.z);
 		return num;
 	};
 

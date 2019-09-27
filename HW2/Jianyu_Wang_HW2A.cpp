@@ -3,7 +3,11 @@
 using namespace std;
 
 int WindChill(int T,int V){
-    return (int)(35.74+0.6215*T-35.75*pow(V,0.16)+0.4275*T*pow(V,0.16));
+    double num=(35.74+0.6215*T-35.75*pow(V,0.16)+0.4275*T*pow(V,0.16));
+    //cout<<num<<"   ";
+    if ((int)(num*10)%10>=5&&num>0) return (int)num+1;
+    else if((int)abs(num*10)%10>=5&&num<0) return (int)num-1;
+    else return (int)num;
 }
 
 //- TEMPERATURE | V
@@ -30,7 +34,7 @@ int main(int argc, char const *argv[])
             if (temp>=10||(temp<0&&temp>-10))cout<<" ";
             else if(temp>=0)cout<<"  ";
             cout<<temp<<"  ";
-        }
+        }///¿¿¿¿¿¿¿¿¿÷÷÷÷÷÷÷
         cout<<endl<<endl;
     }
     

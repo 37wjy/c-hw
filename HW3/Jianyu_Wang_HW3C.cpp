@@ -1,36 +1,59 @@
- //Complete hwBody, creating body objects that will later be used for the solar system simulator.
- 
- #include <iostream>
- using namespace std;
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+
+using namespace std;
 
 
- class Body {
-    string name;
-    double mass;
-    double x,y,z;
-    double radius;
+class C3{
+    int** _mx;
+    int row,col;
 public:
-    Body(string _name,double _mass,double _X,double _Y,double _Z,double _radius){
-        name=_name;
-        mass=_mass;
-        x=_X;
-        y=_Y;
-        z=_Z;
-        radius=_radius;
-    }
+    C3(){
+        ifstream f("3C.dat");
+        f>>row>>col;
+        int** mx=(int**)malloc(sizeof(int*)*row);
+        for(int i=0;i<row;i++){
+            mx[i]=(int*)malloc(sizeof(int)*col);
+        }
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                f>>mx[i][j];
+                ;}
+        }
+        _mx=mx;
+        f.close();
+    };
 
-    friend ostream &operator <<(std::ostream &output, const Body& rhs ){
-        output << "name : " << rhs.name << " mass : " << rhs.mass<< " position : ";
-        return output;     
+
+    void print(){
+        int s=0;
+        int s1=0;
+        for(int i=0;i<row;i++){
+            s=0;
+            for(int j=0;j<col;j++){
+                cout<<std::left<<setw(6)<<_mx[i][j];
+                s+=_mx[i][j];
+            }cout<<std::left<<setw(12)<<"rowsum ="<<s<<endl;
+        }
+        cout<<"---------------------------------"<<endl;
+        for(int i=0;i<col;i++){
+            s=0;
+            for(int j=0;j<row;j++){
+                s+=_mx[j][i];
+            }
+            cout<<std::left<<setw(6)<<s;
+            s1+=s;
+        }
+        cout<< "totalsum =   "<<s1<<endl;
     }
 };
 
-int main() {
-	//         name      mass(kg) x y z  radius (m)
-	Body earth("earth", 5.972e24, 0,0,0, 6.371e6);
-	Body moon("moon",   7.34767309e22, 384.400e6,0,0,  1.737e6);
-	cout << earth << '\n';
-	cout << moon << '\n';
+int main(int argc, char const *argv[])
+{
+    C3 c;
+    c.print();
     return 0;
 }
-	
+

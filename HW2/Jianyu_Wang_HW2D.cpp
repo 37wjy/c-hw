@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -23,6 +23,7 @@ string vowels(string a){
 }
 
 bool palindrome(string a){
+    if(string.length()<=1)return false;
     for(int i=0;i<a.length();i++){
         if(a[i]==a[a.length()-i-1])continue;
         else return false;
@@ -34,7 +35,7 @@ int main(int argc, char const *argv[])
 {
     string inp;
     cout<<"enter a string :";
-    cin>>inp;
+    getline(cin,inp);
     cout<<endl<<"THe string backwards is : "<<reverse(inp)<<endl;
     cout<<endl<<"THe string is "<<(palindrome(inp)?"":"Not ")<<"palindrome"<<endl;
     cout<<endl<<"THe string without vowels : "<<vowels(inp)<<endl;
