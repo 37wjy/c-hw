@@ -11,7 +11,14 @@ private:
 	// diff between Jan. 1 2001 12:03:04  and Feb 26 2028 11:19:02
 	double jday; // number of days since epoch
 public:
-    JulianDate (int year,int mon,int day,int hour,int min,int second):_mon(mon),_day(day),_year(year),_hour(hour),_min(min),_sec(second){jday= 365 * (_year - 2000) + _year/4+(_year-2000)/400-(_year-2000)/100;};
+    JulianDate (int year,int mon,int day,int hour,int min,int second):_mon(mon),_day(day),_year(year),_hour(hour),_min(min),_sec(second){
+        jday= 365 * (_year - 2000) + _year/4+(_year-2000)/400-(_year-2000)/100;
+        int months[12]={31,28,31,30,31,30,31,31,30,31,30,31};	
+        if(isLeapYear(year)) months[1]=29;
+        for(int i=0;i<mon-1;i++)
+            jday+=months[i];
+        jday+=day;};
+
     JulianDate (int year){_year=year; _mon=1;_day=1;_hour=0;_min=0;_sec=0;jday= 365 * (_year - 2000) + _year/4+(_year-2000)/400-(_year-2000)/100;}
     JulianDate(){
         time_t rawtime=time(NULL);
@@ -67,28 +74,7 @@ public:
     JulianDate operator=(int year){return JulianDate(year);}
 
     double operator-(const JulianDate &date){
-        int num=0;
-        JulianDate bigDate,smallDate;
-        int value=compare(date);
-        if(value==1){
-            bigDate=*this;
-            smallDate=date;
-        }else if(value==-1){   
-            bigDate=date;		
-            smallDate=*this;	
-        }else return 0;
-        int yearGap=bigDate._year-smallDate._year;
-
-        if(yearGap>=2){		
-            for(int i=smallDate._year+1;i<=bigDate._year-1;i++){			
-                if(isLeapYear(i)) num+=1;				
-            }			
-        }
-            
-        num+=bigDate._mon*30+bigDate._day-smallDate._mon*30-smallDate._day;		
-
-        if(value==1) return yearGap+num/365.0;	
-        else return -yearGap-num/365.0;
+        return jday-date.jday+(_hour-date._hour)/24.0+(_min-date._min)/24.0/60.0;
     }
     
     JulianDate operator+(int days){	
@@ -173,7 +159,7 @@ int main() {
 
 
 	double days = valentine - newyear;
-
+    cout<<days<<endl;
 	JulianDate due = today + 7;
 
 	cout << due << '\n';
