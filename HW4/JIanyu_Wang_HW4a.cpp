@@ -37,7 +37,7 @@ public:
 	};
 
 	Vec3d operator-(const Vec3d& rhs) const{   //lhs
-		Vec3d num(rhs.x-x,rhs.y-y,rhs.z-z);
+		Vec3d num(x-rhs.x,y-rhs.y,z-rhs.z);
 		return num;
 	};
 

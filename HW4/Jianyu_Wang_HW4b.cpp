@@ -74,7 +74,7 @@ public:
     JulianDate operator=(int year){return JulianDate(year);}
 
     double operator-(const JulianDate &date){
-        return jday-date.jday+(_hour-date._hour)/24.0+(_min-date._min)/24.0/60.0;
+        return jday-date.jday+(_hour-date._hour)/24.0+(_min-date._min)/24.0/60.0+(_sec-date._sec)/24.0/60.0/60.0;
     }
     
     JulianDate operator+(int days){	
@@ -109,6 +109,7 @@ public:
     }
 
     friend ostream& operator<<(ostream& os,const JulianDate& dt){
+        string a[12]={"Jan","Feb","Mar","Apr","May","Jun","Jul","Sep","Oct","Nov","Dec"};
         os<<dt._year<<"/"<<dt._mon<<"/"<<dt._day<<" "<<dt._hour<<":"<<dt._min<<":"<<dt._sec<<endl;
         return os; 
     }
@@ -145,41 +146,25 @@ hh:mm:ss
 12:00:00  0.5
  */
 
-JulianDate EPOCH = 2000; // Jan.1 2000, 00:00:00 = 0
+int JulianDate::EPOCH = 2000; // Jan.1 2000, 00:00:00 = 0
 
 int main() {
-
 	JulianDate newyear(2018, 1, 1, 0,0,0);
-
 	JulianDate valentine(2018, 2, 14, 12,0,0); // 0.5
-
 	JulianDate today; // get it from the system time: time(nullptr)
-
 	                  // localtime
 
-
 	double days = valentine - newyear;
-    cout<<days<<endl;
 	JulianDate due = today + 7;
-
 	cout << due << '\n';
 
-
-
 	cout << "\nyear: " << newyear.getYear()
-
 			 << "\nmonth: " << newyear.getMonth()
-
 			 << "\nday: " << newyear.getDay()
-
 			 << "\nhour: " << newyear.getHour()
-
 			 << "\nmin: " << newyear.getMin()
-
 			 << "\nsec: " << newyear.getSec() << '\n';
-
 	JulianDate d1(2019, 1, 1, 0,0,0);
-
 	for (int i = 0; i < 100; i++)
 		cout << d1 + i;
 
