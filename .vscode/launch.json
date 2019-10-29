@@ -4,9 +4,8 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "name": "g++-5 build active file",
+            "name": "g++-7 build and debug active file",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
@@ -14,12 +13,17 @@
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "osx": {
-                "console": "internalConsole",
-            },
             "externalConsole": false,
-            "MIMode": "lldb",
-            "preLaunchTask": "g++ build active file"
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "g++-7 build active file",
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }

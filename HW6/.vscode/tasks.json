@@ -5,8 +5,8 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++-9 build active file",
-            "command": "/usr/local/bin/g++-9",
+            "label": "g++-7 build active file",
+            "command": "/usr/bin/g++-7",
             "args": [
                 "-g",
                 "${file}",
@@ -14,7 +14,7 @@
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "/usr/local/bin"
+                "cwd": "/usr/bin"
             },
             "problemMatcher": [
                 "$gcc"

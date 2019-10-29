@@ -5,26 +5,8 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "g++-5 build active file",
-            "command": "/usr/local/bin/g++-5",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
-            "options": {
-                "cwd": "/usr/local/bin"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": "build"
-        },
-        {
-            "type": "shell",
-            "label": "g++ build active file",
-            "command": "/usr/bin/g++",
+            "label": "g++-7 build active file",
+            "command": "/usr/bin/g++-7",
             "args": [
                 "-g",
                 "${file}",

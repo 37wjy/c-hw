@@ -149,5 +149,4 @@ int main() {
 	d.add(new Line(400,500, 600,550));
 	d.add(new Polygon(200,200, 50, 6));
 	d.draw();
-    cout<<"fin"
 }

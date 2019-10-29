@@ -87,9 +87,8 @@ private:
     {return 1 - fpart(x);}
 
 	void plot(int x,int y,double opa,uint32_t color){
-		int a=(int((color>>24&0xff)*opa))&0xff;
-		color=((color<<8)>>8)+a;
-		pixels[y][x]=mix(color,pixels[y][x]);
+		int a=((int((color>>24&0xff)*opa))&0xff)<<24;
+		pixels[y][x]=mix(((color<<8)>>8)+a,pixels[y][x]);
 	}
 
 public:
@@ -114,9 +113,9 @@ public:
 
 	void drawRect(int x,int y, int width,int hight, uint32_t color){
 		line(x,y,x,y+hight,color);
-		line(x,y+hight-1,x+width,y+hight-1,color);
+		line(x,y+hight,x+width,y+hight,color);
 		line(x,y,x+width,y,color);
-		line(x+width-1,y,x+width-1,y+hight,color);
+		line(x+width,y,x+width,y+hight,color);
 	}
 
 	void fillRect(int x,int y, int width,int hight, uint32_t color){
@@ -135,7 +134,7 @@ public:
 		
 		if(abs(a)<1&&xl!=xr){
 			if(xr<xl)swap(xr,xl);
-			for (int i = xl; i < xr; i++)
+			for (int i = xl; i <= xr; i++)
 			{	
 				if(anti&&a){
 				}
@@ -151,7 +150,7 @@ public:
 				uint32_t mtx[(int)abs(a)][2]; 
 			}
 			if(yr<yl)swap(yl,yr);
-			for (int i = yl; i < yr; i++)
+			for (int i = yl; i <= yr; i++)
 			{
 				pixels[i][(int)(xl+(i-yl)/a)]=color;
 				pixels[i+1][(int)(xl+(i-yl)/a)]=mix(color-0x80000000,pixels[i+1][(int)(xl+(i-yl)/a)]);
@@ -160,7 +159,7 @@ public:
 		}
 		else{
 			if(yr<yl)swap(yl,yr);
-			for (int i = yl; i < yr; i++)
+			for (int i = yl; i <= yr; i++)
 			{
 				pixels[i][xl]=color;
 			}
@@ -169,19 +168,18 @@ public:
 
 	void ellipse(int xc, int yc, int dx, int dy){
 		int x,y;
-		int b=min(dx,dy);
-		int a=max(dx,dy);
+		int b=min(dx/2.0,dy/2.0);
+		int a=max(dx/2.0,dy/2.0);
 		double l=M_PI*2*b+4*abs(a-b);
-		double step=1/l;
+		double step=4/l;
 		for (double r = -M_PI; r < M_PI; r+=step)
 		{	
-			y=yc+dy*sin(r);
-			x=xc+dx*cos(r);
+			y=yc+dy*sin(r)/2;
+			x=xc+dx*cos(r)/2;
 			if(x>=0&&y>=0&&x<w&&y<h){
 				pixels[y][x]=0xFF00FF00;
 			}
 		}
-		
 	}
 
 	uint32_t mix(uint32_t c1,uint32_t c2){
@@ -218,7 +216,7 @@ int main() {
 	int ycenter = 100;
 	int xdiameter = 200;
 	int ydiameter = 100;
-
+	0xffaabb;
 	Bitmap b(BLACK); // Hardcoded size (600 x 400 pixels)
 	
     b.horizLine(0, 500, 200, RED); // Red horizontal line, from x=0 to x=500, at y = 200
@@ -227,17 +225,16 @@ int main() {
 	b.drawRect(200,200, 100,50, BLUE); // Blue rectangle, TOP-LEFT at x=200, y=200. width=100, height=50
 	b.fillRect(201,201, 98,48, WHITE); // White rectangle, same rules as above, but filled with color
 	
-	//b.line(400,0, 550,300, YELLOW); // Line drawn using https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
+	b.line(400,0, 550,300, YELLOW); // Line drawn using https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
 	
 	b.ellipse(xcenter, ycenter, xdiameter, ydiameter); //Ellipse using specs from above
-	b.antialiasedLine(400,0, 550,300, YELLOW);  
-
-	b.save("bitmap.png");
-	
-	
+		
 	// THIRD PART - OPTIONAL FUNCTION
 	// 100pt bonus for properly implementing Wu's antialiasing
 	//https://en.wikipedia.org/wiki/Xiaolin_Wu%27s_line_algorithm
-	      
+	b.antialiasedLine(599,0, 550,300, 0xeeffddbb);  
+
+	b.save("bitmap.png");
+  
 }
 

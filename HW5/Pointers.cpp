@@ -12,24 +12,24 @@ void fill(int x[], int size) {
 // add 1 to every element of x
 void increment(int x[], int size) {
     int* p=x;
-    for(int i=0;i<size;i++,p++){
-        (*p)++;
+    for(int i=0;i<size;i++){
+        ++(*p++);
     }
 }
 
 // double every element of x
 void doubleMe(int x[], int size) {
     int* p=x;
-    for(int i=0;i<size;i++,p++){
-        (*p)*=2;
+    for(int i=0;i<size;i++){
+        (*p++)*=2;
     }
 }
 
 // print out every element of x separated by spaces  then newline
 void print(int x[], int size) {
     int* p=x;
-    for(int i=0;i<size;i++,p++){
-        cout<<*p<<" ";
+    for(int i=0;i<size;i++){
+        cout<<*p++<<" ";
     }
     cout<<endl;
 }
