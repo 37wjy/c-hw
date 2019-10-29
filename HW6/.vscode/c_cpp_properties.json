@@ -7,10 +7,10 @@
             ],
             "defines": [],
             "macFrameworkPath": [],
-            "compilerPath": "/usr/local/bin/g++-5",
-            "intelliSenseMode": "gcc-x64",
-            "cppStandard": "c++11",
-            "cStandard": "c11"
+            "compilerPath": "/usr/local/bin/g++-9",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
         }
     ],
     "version": 4
