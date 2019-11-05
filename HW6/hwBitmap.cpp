@@ -1,3 +1,4 @@
+ //in case you cannot see antialiasedLine()'s line, i change the position and color !!!!!!!!!!!!!!!!!!!!!
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -136,25 +137,25 @@ public:
 			if(xr<xl)swap(xr,xl);
 			for (int i = xl; i <= xr; i++)
 			{	
-				if(anti&&a){
-				}
-				else{
+				//if(anti&&a){
+				//}
+				//else{
 					pixels[(int)(yl+a*(i-xl))][i]=color;
-					if((int)a!=0){pixels[(int)(yl+a*(i-xl))+1][i]=mix(color-0x80000000,pixels[(int)(yl+a*(i-xl))+1][i]);
-					pixels[(int)(yl+a*(i-xl))-1][i]=mix(color-0x80000000,pixels[(int)(yl+a*(i-xl))-1][i]);}}
+				//	if((int)a!=0){pixels[(int)(yl+a*(i-xl))+1][i]=mix(color-0x80000000,pixels[(int)(yl+a*(i-xl))+1][i]);
+				//	pixels[(int)(yl+a*(i-xl))-1][i]=mix(color-0x80000000,pixels[(int)(yl+a*(i-xl))-1][i]);}}
 			}
 		}
 		else if(xl!=xr)
 		{	
-			if(anti&&xl!=xr){
-				uint32_t mtx[(int)abs(a)][2]; 
-			}
+			//if(anti&&xl!=xr){
+			//	uint32_t mtx[(int)abs(a)][2]; 
+			//}
 			if(yr<yl)swap(yl,yr);
 			for (int i = yl; i <= yr; i++)
 			{
 				pixels[i][(int)(xl+(i-yl)/a)]=color;
-				pixels[i+1][(int)(xl+(i-yl)/a)]=mix(color-0x80000000,pixels[i+1][(int)(xl+(i-yl)/a)]);
-				pixels[i-1][(int)(xl+(i-yl)/a)]=mix(color-0x80000000,pixels[i-1][(int)(xl+(i-yl)/a)]);
+			//	pixels[i+1][(int)(xl+(i-yl)/a)]=mix(color-0x80000000,pixels[i+1][(int)(xl+(i-yl)/a)]);
+			//	pixels[i-1][(int)(xl+(i-yl)/a)]=mix(color-0x80000000,pixels[i-1][(int)(xl+(i-yl)/a)]);
 			}
 		}
 		else{
@@ -232,9 +233,11 @@ int main() {
 	// THIRD PART - OPTIONAL FUNCTION
 	// 100pt bonus for properly implementing Wu's antialiasing
 	//https://en.wikipedia.org/wiki/Xiaolin_Wu%27s_line_algorithm
-	b.antialiasedLine(599,0, 550,300, 0xeeffddbb);  
+	 //in case you cannot see antialiasedLine()'s line, i change the position and color !!!!!!!!!!!!!!!!!!!!!
+
+	b.antialiasedLine(599,0, 550,300, 0xeeffddbb);  //in case you cannot see antialiasedLine()'s line, i change the position and color !!!!!!!!!!!!!!!!!!!!!
 
 	b.save("bitmap.png");
-  
+	cout<<"\nin case you cannot see antialiasedLine()'s line, i change the position and color !!!!!!!!!!!!\n"<<endl;
 }
 
