@@ -44,15 +44,15 @@ template<typename T>
 class GrowArray{
 private:
     /* data */
-    T* data;
+    T** data;
     uint64_t f;
     uint64_t n;
 
 public:
-    GrowArray(uint64_t n) :data((T*)new char[n * sizeof(T)]),n(n),f(-1){}
-    ~GrowArray() {}
+    GrowArray(uint64_t n) :data((T**)new char[n * sizeof(T*)]),n(n),f(0){}
+    ~GrowArray() {delete[] data;}
     void add(T obj){
-        data[f+1]=obj;
+        data[f]=new Person(obj);
         f++;
     }
 };
