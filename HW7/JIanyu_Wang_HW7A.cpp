@@ -18,7 +18,6 @@ public:
     LinkedList2(){};
     ~LinkedList2(){
         Node* p;
-        tail=nullptr;
         while (head!=nullptr)
         {
             p=head;
@@ -28,7 +27,7 @@ public:
     };
     LinkedList2(const LinkedList2 &orig)
     {
-        cout<<"cpy\n";
+        //cout<<"cpy\n";
         while (head != nullptr)
         {
             Node *p = head;
@@ -49,7 +48,7 @@ public:
     // move constructor
     LinkedList2(LinkedList2 &&orig){
         // steal orig data while it's dying (nice)
-        cout<<"move"<<endl;
+        //cout<<"move"<<endl;
         this->head=orig.head;
         this->tail=orig.tail;
         orig.head=nullptr;
@@ -131,6 +130,7 @@ public:
     LinkedList2 &operator=(const LinkedList2 &orig)
     {
         if(&orig==this)return *this;
+        
         LinkedList2 s(orig);
         while (head != nullptr)
         {
@@ -138,23 +138,23 @@ public:
             head = head->next;
             delete p;
         }
-        this->head=s.head;
-        this->tail=s.tail;
+        head=s.head;
+        tail=s.tail;
         s.head=nullptr;
         s.tail=nullptr;
         return *this;
     }
 
     friend ostream& operator << (ostream& a,LinkedList2& r){
-        a<<"head --> ";
+        //a<<"head --> ";
         Node *p=r.head;
         while (p!=nullptr)
         {
-            a<<"[ val ="<<p->val<<" next = ";
+            a<<p->val<<" ";
             p=p->next;
-            if(p!=nullptr)a<<"----> ";
+            //if(p!=nullptr)a<<"----> ";
         }
-        a<<"nullptr";
+        //a<<"nullptr ";
         return a;
         
     }
