@@ -5,13 +5,21 @@ using namespace std;
 class LinkedList2
 {
 private:
-    class Node
+    /*class Node
     { // LinkedList2::Node
     public:
         int val;
         Node *next;
         Node(int x, Node *nd = NULL) : val(x), next(nd){};
+    };*/
+
+    struct Node
+    {
+        int val;
+        Node* next;
+        Node (int v,Node* next=NULL):val(v),next(next){};
     };
+    
     Node *head=nullptr;
     Node *tail=nullptr;
 public:

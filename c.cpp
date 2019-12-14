@@ -7,7 +7,18 @@ public:
 	A(){cout<<"a";}
 };
 
-class B:A{
+class C
+{
+private:
+	/* data */
+public:
+	C(/* args */) {cout<<'c';}
+	~C() {}
+};
+
+class B:public A{
+	private:
+	C c;
 	public:
 	B():A(){cout<<"b";}
 };

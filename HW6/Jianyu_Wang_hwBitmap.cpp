@@ -1,8 +1,4 @@
-/*
- * author: weibin_ma
- * date: 30/10/2019
- * title: HW6A - Bitmap1
- */
+
 
 #include <iostream>
 #include <string>

@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "./Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/**"
+                "./Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/**",
+                "/Users/wjy/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include"
             ],
             "defines": [],
             "macFrameworkPath": [],

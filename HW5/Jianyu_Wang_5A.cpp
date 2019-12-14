@@ -79,7 +79,6 @@ class Polygon: public Shape {
     double _x;double _y;double _r;int _n;double _a;
 public:
     Polygon(double x,double y,double r,int n,double a=0) {_x=x;_y=y;_r=r;_n=n;_a=(a/180.0)*M_PI;}
-
     void draw(ostream& s){
         float x,y;
         for(int i=0;i<_n;i++){
